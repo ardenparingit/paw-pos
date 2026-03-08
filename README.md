@@ -2,7 +2,7 @@
 
 Initial Python scaffold for an offline-first POS MVP.
 
-Planning and specification support for this project is derived from the [BMAD method](https://github.com/bmad-code-org/bmad-builder) and refined in this repository.
+Planning and specification support for this project is derived from the [BMAD method](https://github.com/bmad-code-org/BMAD-METHOD) and refined in this repository.
 Codex is the primary AI coding assistant; final technical decisions and code acceptance are made by the project owner.
 
 ## Included MVP Core
