@@ -1,4 +1,10 @@
-# Paw POS MVP Tech Spec
+# Paw POS Bootstrap Scaffold Spec
+
+Status: Completed (scaffold only)
+
+This document is intentionally scoped to the initial backend scaffold. It is not the full MVP delivery plan.
+
+Provenance: Derived from BMAD workflow artifacts (brainstorming + quick-spec) and then refined in-repo for project clarity.
 
 ## Overview
 
@@ -6,25 +12,23 @@
 The pet store currently runs checkout, inventory tracking, and earnings tracking manually in notebooks. This is slow, unstructured, and error-prone for a single non-technical operator.
 
 ### Solution
-Build an offline-first POS MVP with a very simple operator flow: basic checkout, inventory update/listing, and earnings summaries with CSV export. Use Python for the initial project scaffold and core business logic.
+Create an offline-first Python scaffold for Paw POS with SQLite schema, service-layer business logic, CSV exporters, minimal CLI wiring, and baseline tests.
 
-### Scope
+### Scope (Scaffold Scope)
 
 In Scope:
-- Basic cash checkout with item list selection and manual line support
-- Inventory product list and stock update
-- Earnings summaries (daily, weekly, monthly)
-- CSV export for sales and inventory data
-- Offline-first local SQLite data storage
-- Single-operator UX assumptions
+- Python package setup and project metadata
+- SQLite persistence schema and initialization
+- Core domain models and service classes
+- CSV export helpers
+- Minimal CLI entry and app facade
+- Baseline automated tests for core flows
 
 Out of Scope:
-- Multi-user roles and permissions
-- Receipt printing
-- Discounts and promotions
-- Barcode scanning
-- Cloud sync and real-time multi-device sync
-- Full audit traceability controls (deferred to phase 2)
+- Full productized CLI/API command set
+- Production-grade error and backup flows
+- Mobile/UI implementation
+- Full MVP feature-complete delivery
 
 ## Technical Direction
 
@@ -34,12 +38,12 @@ Out of Scope:
 - Runtime mode: offline-first, no backend service required for MVP
 - Python strategy: strategic use for core domain/services and exports
 
-### Key Product Decisions
-- Checkout supports catalog items and manual entries
-- No discounts in MVP
-- Stock auto-deducts on sale completion
-- Earnings include daily/weekly/monthly rollups
-- CSV export included in MVP
+### Key Technical Decisions
+- Checkout domain supports catalog and manual sale lines
+- Stock auto-deducts on successful sale persistence
+- Earnings service supports daily/weekly/monthly summaries
+- Currency stored in integer cents
+- SQLite foreign keys enabled
 
 ## Context for Development
 
@@ -70,61 +74,61 @@ Out of Scope:
 - SQLite foreign keys enabled
 - Service methods validate business rules (cash-only, no discount path)
 
-## Implementation Plan
+## Implementation Plan (Scaffold)
 
 ### Tasks
-- [ ] Task 1: Initialize Python project structure and package metadata
+- [x] Task 1: Initialize Python project structure and package metadata
   - File: `pyproject.toml`, `README.md`, `.gitignore`
   - Action: Define project metadata and local development instructions
   - Notes: Keep dependency-light scaffold
 
-- [ ] Task 2: Create persistence foundation
+- [x] Task 2: Create persistence foundation
   - File: `src/paw_pos/db.py`
   - Action: Add SQLite connection helper and schema initializer for products, sales, and sale_items
   - Notes: Ensure foreign keys are enabled and schema is idempotent
 
-- [ ] Task 3: Define domain contracts
+- [x] Task 3: Define domain contracts
   - File: `src/paw_pos/models.py`
   - Action: Add dataclasses for sale lines, sale results, and summary records
   - Notes: Model both catalog and manual sale lines
 
-- [ ] Task 4: Implement inventory service
+- [x] Task 4: Implement inventory service
   - File: `src/paw_pos/services/inventory.py`
   - Action: Add product upsert, list, and stock adjustment operations
   - Notes: Keep API friendly for non-technical operator workflow
 
-- [ ] Task 5: Implement sales service
+- [x] Task 5: Implement sales service
   - File: `src/paw_pos/services/sales.py`
   - Action: Add cash checkout workflow with stock deduction and change calculation
   - Notes: Reject insufficient cash and out-of-stock cases
 
-- [ ] Task 6: Implement earnings service
+- [x] Task 6: Implement earnings service
   - File: `src/paw_pos/services/earnings.py`
   - Action: Add daily/weekly/monthly summary queries
   - Notes: Use SQL date bucketing with explicit period handling
 
-- [ ] Task 7: Implement CSV exports
+- [x] Task 7: Implement CSV exports
   - File: `src/paw_pos/exporters/csv_export.py`
   - Action: Add export methods for products and sales
   - Notes: Produce portable CSV files for backup/reporting
 
-- [ ] Task 8: Add app facade and CLI entry
+- [x] Task 8: Add app facade and CLI entry
   - File: `src/paw_pos/app.py`, `src/paw_pos/cli.py`
   - Action: Wire services behind a simple façade and basic CLI commands
   - Notes: Keep CLI minimal; UI can be added later
 
-- [ ] Task 9: Add scaffold tests
+- [x] Task 9: Add scaffold tests
   - File: `tests/test_sales_flow.py`
   - Action: Verify checkout, stock deduction, and earnings summary behavior
   - Notes: Use temp SQLite DB for isolated tests
 
 ### Acceptance Criteria
-- [ ] AC 1: Given an initialized DB, when a product is created, then it appears in inventory listing with persisted stock and price.
-- [ ] AC 2: Given sufficient stock and cash, when a sale is completed, then sale and line items are persisted and stock is reduced correctly.
-- [ ] AC 3: Given insufficient cash, when a sale is attempted, then checkout fails with a validation error and no data mutation.
-- [ ] AC 4: Given existing sales, when daily/weekly/monthly earnings are queried, then totals and transaction counts are returned correctly.
+- [x] AC 1: Given an initialized DB, when a product is created, then it appears in inventory listing with persisted stock and price.
+- [x] AC 2: Given sufficient stock and cash, when a sale is completed, then sale and line items are persisted and stock is reduced correctly.
+- [x] AC 3: Given insufficient cash, when a sale is attempted, then checkout fails with a validation error and no data mutation.
+- [x] AC 4: Given existing sales, when daily/weekly/monthly earnings are queried, then totals and transaction counts are returned correctly.
 - [ ] AC 5: Given existing products and sales, when CSV export runs, then CSV files are generated with expected headers and rows.
-- [ ] AC 6: Given this scaffold, when tests run, then core MVP logic passes in a clean environment.
+- [x] AC 6: Given this scaffold, when tests run, then core MVP logic passes in a clean environment.
 
 ## Additional Context
 
@@ -140,4 +144,4 @@ Out of Scope:
 
 ### Notes
 - This scaffold is backend/domain-focused and intentionally UI-agnostic.
-- Mobile UI and packaging can be layered on top in the next implementation phase.
+- Remaining MVP work is tracked in `docs/paw-pos-mvp-backlog.md`.
