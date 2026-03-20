@@ -19,78 +19,105 @@ Provenance: Derived from BMAD planning artifacts, then maintained in-repo.
 4. Run tests.
 5. Update story status and notes here.
 
-## Epic 1: Backend MVP Completion
+## Pivot Note (2026-03-21)
 
-### Story 1.1 - Bootstrap Scaffold
-- Status: Done
-- Spec: `docs/specs/story-1-1-bootstrap-scaffold.md`
-- Notes: Initial Python package, SQLite schema, service layer, CSV exporters, baseline tests.
+Backlog structure is pivoted to web-only delivery. Existing bootstrap implementation work remains valuable but the execution order is now browser-first.
 
-### Story 1.2 - Product Management Commands
+## Epic 1: Web App Platform and Offline Foundation
+
+### Story 1.1 - Web App Shell and Navigation Baseline
 - Status: Planned
-- Spec: `docs/specs/story-1-2-product-management.md` (create when starting)
-- Scope:
-  - Add product command
-  - Adjust stock command
-  - Product list output polish
+- Spec: `docs/specs/story-1-1-web-shell-navigation.md`
+- Notes: High-level story spec drafted; implementation specifics intentionally deferred.
 
-### Story 1.3 - Checkout Command Flow
+### Story 1.2 - Local Data Persistence Foundation
 - Status: Planned
-- Spec: `docs/specs/story-1-3-checkout-flow.md` (create when starting)
-- Scope:
-  - Record sale command
-  - Catalog and manual line support
-  - Cash received and change output
-  - Validation and clear error messages
+- Spec: `docs/specs/story-1-2-local-data-persistence.md` (create when starting)
 
-### Story 1.4 - Earnings Commands
+### Story 1.3 - Offline and Online State Handling
 - Status: Planned
-- Spec: `docs/specs/story-1-4-earnings.md` (create when starting)
-- Scope:
-  - Daily summary command
-  - Weekly summary command
-  - Monthly summary command
+- Spec: `docs/specs/story-1-3-offline-online-state.md` (create when starting)
 
-### Story 1.5 - CSV Backup and Restore
+### Story 1.4 - Data Durability and Recovery Baseline
 - Status: Planned
-- Spec: `docs/specs/story-1-5-backup-restore.md` (create when starting)
-- Scope:
-  - Export products and sales
-  - Restore/import flow with safety prompts
+- Spec: `docs/specs/story-1-4-data-durability-recovery.md` (create when starting)
 
-### Story 1.6 - Test Expansion and Hardening
+## Epic 2: Domain Core for Web
+
+### Story 2.1 - Product Catalog Domain Flow
 - Status: Planned
-- Spec: `docs/specs/story-1-6-test-hardening.md` (create when starting)
-- Scope:
-  - Manual-line sale tests
-  - Out-of-stock tests
-  - Weekly/monthly boundary tests
-  - CSV coverage tests
+- Spec: `docs/specs/story-2-1-product-catalog-domain.md` (create when starting)
 
-## Epic 2: Operator-Focused UI
-
-### Story 2.1 - UI Shell and Navigation
+### Story 2.2 - Sales Transaction Domain Flow
 - Status: Planned
-- Spec: `docs/specs/story-2-1-ui-shell.md` (create when starting)
+- Spec: `docs/specs/story-2-2-sales-transaction-domain.md` (create when starting)
 
-### Story 2.2 - Checkout Screen
+### Story 2.3 - Inventory Movement Domain Flow
 - Status: Planned
-- Spec: `docs/specs/story-2-2-checkout-screen.md` (create when starting)
+- Spec: `docs/specs/story-2-3-inventory-movement-domain.md` (create when starting)
 
-### Story 2.3 - Inventory Screen
+### Story 2.4 - Earnings and Reporting Domain Flow
 - Status: Planned
-- Spec: `docs/specs/story-2-3-inventory-screen.md` (create when starting)
+- Spec: `docs/specs/story-2-4-earnings-reporting-domain.md` (create when starting)
 
-### Story 2.4 - Earnings Screen
+### Story 2.5 - Data Import and Export Domain Flow
 - Status: Planned
-- Spec: `docs/specs/story-2-4-earnings-screen.md` (create when starting)
+- Spec: `docs/specs/story-2-5-data-import-export-domain.md` (create when starting)
 
-## Epic 3: Pilot Readiness
+## Epic 3: Operator Web UX
 
-### Story 3.1 - Soft Launch Checklist
+### Story 3.1 - Module Cockpit and Home Experience
 - Status: Planned
-- Spec: `docs/specs/story-3-1-soft-launch.md` (create when starting)
+- Spec: `docs/specs/story-3-1-module-cockpit-home.md` (create when starting)
 
-### Story 3.2 - Pilot Fixes and Stability
+### Story 3.2 - Checkout Workspace Experience
 - Status: Planned
-- Spec: create after pilot findings are collected
+- Spec: `docs/specs/story-3-2-checkout-workspace.md` (create when starting)
+
+### Story 3.3 - Inventory Workspace Experience
+- Status: Planned
+- Spec: `docs/specs/story-3-3-inventory-workspace.md` (create when starting)
+
+### Story 3.4 - Earnings Workspace Experience
+- Status: Planned
+- Spec: `docs/specs/story-3-4-earnings-workspace.md` (create when starting)
+
+### Story 3.5 - Daily Operations UX Polish
+- Status: Planned
+- Spec: `docs/specs/story-3-5-daily-operations-ux-polish.md` (create when starting)
+
+## Epic 4: Pilot Readiness and Stabilization
+
+### Story 4.1 - Pilot Setup and Runbook Readiness
+- Status: Planned
+- Spec: `docs/specs/story-4-1-pilot-setup-runbook.md` (create when starting)
+
+### Story 4.2 - Reliability and Recovery Validation
+- Status: Planned
+- Spec: `docs/specs/story-4-2-reliability-recovery-validation.md` (create when starting)
+
+### Story 4.3 - Bug-Fix and Stability Hardening Cycle
+- Status: Planned
+- Spec: `docs/specs/story-4-3-bugfix-stability-hardening.md` (create when starting)
+
+### Story 4.4 - Pilot Feedback Loop and Adjustments
+- Status: Planned
+- Spec: `docs/specs/story-4-4-pilot-feedback-adjustments.md` (create when starting)
+
+## Epic 5: Post-MVP Cloud/API Expansion
+
+### Story 5.1 - API Strategy and Boundaries
+- Status: Planned
+- Spec: `docs/specs/story-5-1-api-strategy-boundaries.md` (create when starting)
+
+### Story 5.2 - Cloud Sync Foundation
+- Status: Planned
+- Spec: `docs/specs/story-5-2-cloud-sync-foundation.md` (create when starting)
+
+### Story 5.3 - Authentication and Access Control
+- Status: Planned
+- Spec: `docs/specs/story-5-3-auth-access-control.md` (create when starting)
+
+### Story 5.4 - Multi-Device Support
+- Status: Planned
+- Spec: `docs/specs/story-5-4-multi-device-support.md` (create when starting)
